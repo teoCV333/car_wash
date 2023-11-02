@@ -75,6 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="typeService"
                 android:text="Tipo de servicio" />
 
             <Button
@@ -82,6 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="myService"
                 android:text="Mi servicio" />
 
             <Button
@@ -89,6 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:onClick="payments"
                 android:text="Pagos" />
 
             <Button

@@ -23,6 +23,21 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void typeService(View v) {
+        Intent intent = new Intent(this, TypeServiceActivity.class);
+        startActivity(intent);
+    }
+
+    public void myService(View v) {
+        Intent intent = new Intent(this, MyServiceActivity.class);
+        startActivity(intent);
+    }
+
+    public void payments(View v) {
+        Intent intent = new Intent(this, PaymentsActivity.class);
+        startActivity(intent);
+    }
+
     public void logOut(View v) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
