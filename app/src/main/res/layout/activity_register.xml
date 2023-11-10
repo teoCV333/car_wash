@@ -8,8 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
-        android:layout_width="255dp"
-        android:layout_height="135dp"
+        android:layout_width="239dp"
+        android:layout_height="180dp"
         android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
@@ -18,8 +18,8 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="243dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
@@ -61,7 +61,7 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="358dp"
-            android:layout_height="401dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -74,8 +74,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Nombres"
                 android:inputType="textPersonName"
-                android:text="Nombres"
                 tools:layout_editor_absoluteX="59dp"
                 tools:layout_editor_absoluteY="60dp" />
 
@@ -84,8 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Apellidos"
                 android:inputType="textPersonName"
-                android:text="Apellidos"
                 tools:layout_editor_absoluteX="61dp"
                 tools:layout_editor_absoluteY="103dp" />
 
@@ -94,8 +94,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Tipo de vehiculo"
                 android:inputType="textPersonName"
-                android:text="Tipo de vehiculo"
                 tools:layout_editor_absoluteX="61dp"
                 tools:layout_editor_absoluteY="144dp" />
 
@@ -104,8 +104,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Edad"
                 android:inputType="textPersonName"
-                android:text="Edad"
                 tools:layout_editor_absoluteX="61dp"
                 tools:layout_editor_absoluteY="185dp" />
 
@@ -114,8 +114,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Celular"
                 android:inputType="textPersonName"
-                android:text="Celular"
                 tools:layout_editor_absoluteX="59dp"
                 tools:layout_editor_absoluteY="220dp" />
 
@@ -124,8 +124,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Correo"
                 android:inputType="textPersonName"
-                android:text="Correo"
                 tools:layout_editor_absoluteX="59dp"
                 tools:layout_editor_absoluteY="259dp" />
 
@@ -134,8 +134,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Confirmar correo"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextPlateRegist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Placa del vehiculo"
                 android:inputType="textPersonName"
-                android:text="Confirmar correo"
                 tools:layout_editor_absoluteX="57dp"
                 tools:layout_editor_absoluteY="300dp" />
 
@@ -183,6 +191,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:onClick="register"
             android:text="Confirmar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
