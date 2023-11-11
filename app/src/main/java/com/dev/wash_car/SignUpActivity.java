@@ -1,25 +1,30 @@
 package com.dev.wash_car;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    FirebaseAuth mAuth;
+    FirebaseAuth auth;
     EditText editTextEmailSignUp, editTextPasswordSignUp;
     Button btnCancelSignUp, btnEndSignUp;
-    UserModel user;
+    UserModel userModel;
     public DatabaseReference dbRef;
 
     String email;
@@ -29,12 +34,13 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        auth = FirebaseAuth.getInstance();
         editTextEmailSignUp = findViewById(R.id.editTextEmailSignUp);
         editTextPasswordSignUp = findViewById(R.id.editTextPasswordSignUp);
         btnCancelSignUp = findViewById(R.id. btnCancelSignUp);
         btnEndSignUp = findViewById(R.id. btnEndSignUp);
 
-        user = new UserModel();
+        userModel = new UserModel();
 
         email = getIntent().getStringExtra("email");
 
@@ -53,20 +59,26 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     public void signUp(View v) {
-
         try {
             if(TextUtils.isEmpty(editTextPasswordSignUp.getText().toString())) {
                 Toast.makeText(getApplicationContext(), "Porfavor ingrese una contraseña", Toast.LENGTH_SHORT).show();
             }
             else {
-                user.setEmail(editTextEmailSignUp.getText().toString());
-                user.setPassword(editTextPasswordSignUp.getText().toString());
-                dbRef.push().setValue(user);
-                new AlertDialog.Builder(this)
-                        .setMessage("Su usuario fue creado exitosamente.")
-                        .show();
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+                String user = editTextEmailSignUp.getText().toString().trim();
+                String pass = editTextPasswordSignUp.getText().toString().trim();
+                auth.createUserWithEmailAndPassword(user, pass)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(getApplicationContext(), "registro exitoso", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "registro fallido", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         } catch(NumberFormatException e) {
             new AlertDialog.Builder(this)

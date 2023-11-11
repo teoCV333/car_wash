@@ -11,11 +11,12 @@ import android.view.View;
 import java.util.Calendar;
 
 public class HomeActivity extends AppCompatActivity {
-
+    String email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        email = getIntent().getStringExtra("email");
     }
 
     public void productsList(View v) {
