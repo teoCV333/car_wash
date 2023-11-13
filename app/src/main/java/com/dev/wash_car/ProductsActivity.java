@@ -1,5 +1,6 @@
 package com.dev.wash_car;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,20 +10,26 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
 public class ProductsActivity extends AppCompatActivity {
-    ArrayList<HashMap<String, Object>> itemsSelected = new ArrayList<>();
+    List<HashMap<String, Object>> itemsSelected = new ArrayList<>();
 
     ProductsAdapter productsAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
+
+        if (getIntent().hasExtra("products")) {
+            itemsSelected = (List<HashMap<String, Object>>) getIntent().getSerializableExtra("products");
+        }
 
         GridView gridView = findViewById(R.id.gridViewMyProducts);
         List<String> names = Arrays.asList(
@@ -33,11 +40,11 @@ public class ProductsActivity extends AppCompatActivity {
                 "Aspirada"
         );
         List<String> prices = Arrays.asList(
-                "5.000",
-                "10.000",
-                "8.000",
-                "8.000",
-                "12.000"
+                "5.000$",
+                "10.000$",
+                "8.000$",
+                "8.000$",
+                "12.000$"
         );
         List<Integer> images = Arrays.asList(
                 R.drawable.img,
@@ -78,12 +85,15 @@ public class ProductsActivity extends AppCompatActivity {
     }
 
     public void back(View v) {
+        Intent intent = new Intent(ProductsActivity.this, HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
 
     public void mySelection(View v) {
         Intent intent = new Intent(ProductsActivity.this, MyProductsActivity.class);
-        intent.putExtra("items", itemsSelected);
+        intent.putExtra("items", (Serializable) itemsSelected);
         startActivity(intent);
     }
 }
