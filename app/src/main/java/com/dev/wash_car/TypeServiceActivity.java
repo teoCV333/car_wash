@@ -23,6 +23,7 @@ public class TypeServiceActivity extends AppCompatActivity {
         btnPremium = findViewById(R.id.btnPremium);
         btnBack = findViewById(R.id.btnBack);
         btnSave = findViewById(R.id.btnSave);
+
     }
 
     public void back(View view) {

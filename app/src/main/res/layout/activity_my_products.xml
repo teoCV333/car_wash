@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Productos"
+        android:text="Mi selección"
         android:textAlignment="center"
         android:textSize="35dp" />
 
@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:onClick="back"
-            android:text="Volver al menu"
+            android:text="Volver a productos"
             android:textSize="16dp" />
 
         <Button
@@ -36,8 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="mySelection"
-            android:text="Ver selección"
+            android:text="Guardar Selección"
             android:textSize="16dp" />
     </LinearLayout>
 

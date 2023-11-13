@@ -28,7 +28,7 @@
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/textViewProductPrice"
+            android:id="@+id/textViewWelcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"

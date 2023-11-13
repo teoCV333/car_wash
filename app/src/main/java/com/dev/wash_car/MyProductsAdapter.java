@@ -8,36 +8,32 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
 
-public class ProductsAdapter extends BaseAdapter {
+public class MyProductsAdapter extends BaseAdapter {
+
     private Context mContext;
-    private List<String> names;
-    private List<String> prices;
-    private List<Integer> images;
+    private List<HashMap<String, Object>> items;
 
-    public ProductsAdapter(Context context, List<String> names, List<String> prices, List<Integer> images) {
+    public MyProductsAdapter(Context context, List<HashMap<String, Object>> items) {
         mContext = context;
-        this.names = names;
-        this.prices = prices;
-        this.images = images;
+        this.items = items;
     }
-
-
 
     @Override
     public int getCount() {
-        return names.size();
+        return items.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return names.get(position);
+        return null;
     }
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return 0;
     }
 
     @Override
@@ -46,15 +42,12 @@ public class ProductsAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.product_item, parent, false);
         }
-
         TextView textViewProductName = convertView.findViewById(R.id.textViewProductName);
         TextView textViewProductPrice = convertView.findViewById(R.id.textViewWelcome);
         ImageView imageViewProduct = convertView.findViewById(R.id.imageViewProduct);
-        textViewProductName.setText(names.get(position));
-        textViewProductPrice.setText(prices.get(position));
-        imageViewProduct.setImageResource(images.get(position));
-
+        textViewProductName.setText((String) items.get(position).get("name"));
+        textViewProductPrice.setText(String.valueOf(items.get(position).get("price")));
+        imageViewProduct.setImageResource((int) items.get(position).get("image"));
         return convertView;
     }
-
 }
